@@ -1,12 +1,13 @@
 //requires
-
+require('./db/db')
 const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
-const photoRouter = ('./routers/photos')
+const photoRouter = require('./routers/photos.js')
 
-app.set("vew engine", "ejs")
+app.set("view engine", "ejs")
+
 
 
 //middleware
@@ -18,7 +19,7 @@ app.use(express.static('public'));
 
 //routers
 
-app.use('/phots', photoRouter)
+app.use('/photos', photoRouter)
 
 
 //listener

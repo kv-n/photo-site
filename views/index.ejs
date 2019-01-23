@@ -1,0 +1,18 @@
+<%- include("./partials/header") %>
+
+<main>
+<h1>ALL DEM PHOTOS</h1>
+<ul>
+<% for(let i = 0; i < photos.length; i++){ %>
+<li>
+name: <a href="/photos/<%=photos[i]._id%>"><%= photos[i].name %><br>
+image: <%= photos[i].image %><br>
+
+<%}%>
+</ul>
+
+<a href="/phots/new" alt="Enter New Image">Enter New Image</a>
+
+</main>
+
+<%- include("./partials/footer") %>
