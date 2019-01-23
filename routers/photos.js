@@ -8,7 +8,6 @@ const Photo = require('../models/photos')
 
 //index
 router.get('/', (req, res) => {
-    console.log('hit')
     Photo.find({}, (err, allPhotos) => {
         if (err) {
             res.send(err)
@@ -21,35 +20,73 @@ router.get('/', (req, res) => {
 })
 
 //new route//rendering create form
-// router.get('/new', (req, res) => {
-
-// })
+router.get('/new', (req, res) => {
+    res.render('../views/new')
+})
 
 
 //create route //create in our database
-// router.post('/', (req, res) => {
-
-// })
+router.post('/', (req, res) => {
+    Photo.create(req.body, (err, createdImage) => {
+        if (err) {
+            res.send(err)
+        } else {
+            console.log(createdImage + ' has been added to the database')
+            res.redirect('/photos')
+        }
+    })
+})
 
 
 //edit route//edit form
-// router.get('/:id/edit', (req, res) => {
-
-// })
+router.get('/:id/edit', (req, res) => {
+    Photo.findById(req.params.id, (err, editPhoto) => {
+        if (err) {
+            res.send(err)
+        } else {
+            console.log(editPhoto)
+            res.render('../views/edit', {
+                photo: editPhoto
+            })
+        }
+    })
+})
 
 //update//edits into databse
-// router.put(':id', (req, res) => {
-
-// })
+router.put('/:id', (req, res) => {
+Photo.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, editedPhoto) => {
+    if (err) {
+        res.send(err)
+    } else {
+        console.log(editedPhoto)
+        res.redirect('/photos')
+    }
+})
+})
 
 //show
-// router.get(':/id', (req, res) => {
-
-// })
+router.get('/:id', (req, res) => {
+    Photo.findById(req.params.id, (err, foundPhoto) => {
+        if (err) {
+            res.send(err)
+        } else {
+            res.render('show', {
+                photo: foundPhoto
+            })
+        }
+    })
+})
 
 //delete
-// router.delete('/:id', (req, res) => {
-
-// })
+router.delete('/:id', (req, res) => {
+    Photo.findByIdAndRemove(req.params.id, (err, deletedImage) => {
+        if (err) {
+            res.send(err)
+        } else {
+            console.log(deletedImage)
+            res.redirect('/photos')
+        }
+    })
+})
 
 module.exports = router

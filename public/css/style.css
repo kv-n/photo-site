@@ -1,0 +1,128 @@
+html {
+    height: 100%;
+}
+body {
+  text-align: center;
+  background-color: white;
+}
+
+h1 {
+    font-family: 'Pacifico', cursive;
+    text-align: center;
+    font-size: 60px;
+    margin: 0px;
+}
+
+img {
+    height: 100%;
+    width: 100%;
+    margin: 5px;
+    padding: 5px;
+}
+
+ul {
+    list-style-type: none;
+    display:inline-block;
+    width: 100%;
+}
+
+li {
+    display:inline-block;
+}
+
+a {
+    margin-bottom: 20px;
+    text-decoration: none;
+    font-family: 'Dosis', sans-serif;
+    color: black;
+    padding: 3px;
+    font-size: 20px;
+}
+
+/* ########################### */
+/* ########### INDEX PAGE */
+.index{
+    display: flex;
+    width:100%;
+}
+
+.photos {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.photo {
+    width: 20%;
+    height: auto;
+    padding: 5px;
+    font-family: 'Dosis', sans-serif;
+    margin-top: 40px;
+    font-size: 20px;
+}
+
+.color:hover
+{
+        color:rgba(78, 78, 78, 0.5);
+}
+
+.show-ejs {
+    height: auto;
+    width: 30%;
+    justify-content: center;
+    text-align: center;
+    margin: auto;
+}
+
+form {
+    padding: 10px;
+}
+
+input {
+    margin: 10px;
+    font-family: 'Dosis', sans-serif;
+}
+p {
+    font-family: 'Dosis', sans-serif;
+    margin: 0;
+}
+
+.new-photos {
+    position: fixed; /* or absolute */
+    top: 25%;
+    left: 38%;
+}
+
+.index-h1 {
+    margin: 20px;
+}
+
+img {
+    opacity: 0.3;
+ }
+ 
+ img:hover {
+    opacity: 1.0;
+ }
+
+ .show-h1 {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 40px;
+    margin: 20px;
+ }
+
+ /* header fade in */
+
+
+  .fade-in {
+    animation: fadeIn ease 4s;
+  }
+
+ @keyframes fadeIn{
+    0% {
+      opacity:0;
+    }
+    100% {
+      opacity:1;
+    }
+  }

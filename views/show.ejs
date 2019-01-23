@@ -1,0 +1,18 @@
+<%- include('partials/header', {}) %>
+
+<main class="show-ejs">
+
+
+<h1 class="show-h1"><%=photo.name.toUpperCase()%></h1>
+
+<img src="<%=photo.image%>" alt="<%= photo.name %>"><br>
+
+<form action="/photos/<%= photo._id %>?_method=DELETE" method="POST">
+<button type="submit">Delete This Image</button>
+</form>
+<a class="color" href="/photos/<%=photo._id%>/edit"> Edit <%=photo.name%></a> |
+<a class="color" href="/photos">All Dem Photos</a>
+
+</main>
+
+<%- include('partials/footer') %>

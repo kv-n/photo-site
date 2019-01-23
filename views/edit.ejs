@@ -1,0 +1,20 @@
+<%- include("./partials/header") %>
+
+<main>
+
+<h1>Edit This Photo</h1>
+
+<form action="/photos/<%=photo._id%>?_method=PUT" method="POST">
+
+Title: <input type="text" name="name" value="<%=photo.name%>"><br>
+Image: <input type="text" name="image" value="<%=photo.image%>"><br>
+
+<button type="submit">Edit</button>
+
+</form>
+
+<a href="/photos">See All Dem Photos</a>
+
+</main>
+
+<%- include("./partials/footer") %>

@@ -1,18 +1,19 @@
 <%- include("./partials/header") %>
 
-<main>
-<h1>ALL DEM PHOTOS</h1>
-<ul>
+<h1 class="index-h1 fade-in">All Dem Photos</h1>
+<a class="color" href="/photos/new" alt="Enter New Image">ENTER A NEW IMAGE</a>
+<main class="index">
+
+<div class="photos">
 <% for(let i = 0; i < photos.length; i++){ %>
-<li>
-name: <a href="/photos/<%=photos[i]._id%>"><%= photos[i].name %><br>
-image: <%= photos[i].image %><br>
-
+<div class="photo">
+Title: <a class="color" href="/photos/<%=photos[i]._id%>"><%= photos[i].name.toUpperCase() %></a> <img src="<%=photos[i].image%>" alt="<%= photos[i].name %>">
+</div>
 <%}%>
-</ul>
-
-<a href="/phots/new" alt="Enter New Image">Enter New Image</a>
+</div>
 
 </main>
+
+
 
 <%- include("./partials/footer") %>
