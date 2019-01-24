@@ -7,7 +7,7 @@
 <div>
 <% for(let i = 0; i < users.length; i++){ %>
 <div class="photo">
-Username: <a class="color" href="/users/<%=users[i]._id%>"><%= users[i].user.toUpperCase() %></a>
+Username: <a class="color" href="/users/<%=users[i]._id%>"><%= users[i].user %></a>
 </div>
 <%}%>
 </div>

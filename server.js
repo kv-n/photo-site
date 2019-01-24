@@ -23,6 +23,10 @@ app.use(express.static('public'));
 app.use('/photos', photoRouter)
 app.use('/users', userRouter)
 
+app.get('/', (req, res) => {
+    res.render('index')
+})
+
 
 //listener
 app.listen(3000, function(){
