@@ -2,11 +2,13 @@
 
 <main class="show-ejs">
 
+<h1 class="show-h1"><%=user.user.toUpperCase()%></h1>
+
 <% for (let i = 0; i <user.photo.length; i++){ %>
 <img src="<%=user.photo[i].image%>" alt="<%= user.photo.name %>"><br>
 <%}%>
 
-<h1 class="show-h1"><%=user.user.toUpperCase()%></h1>
+
 
 <form action="/users/<%= user._id %>?_method=DELETE" method="POST">
 <button type="submit">Delete This User</button>

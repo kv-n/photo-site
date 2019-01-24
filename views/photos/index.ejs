@@ -6,12 +6,12 @@
 <a class="color" href="/users/">USERS</a>
 <main class="index">
 
-<div>
+<div class="users">
 <% for(let i = 0; i < users.length; i++){ %>
-<div class="photo">
 <%= users[i].user.toUpperCase() %>
+<div class="photo">
     <% for(let j = 0; j < users[i].photo.length; j++){ %>
-        <a class="color" href="/photos/<%=users[i].photo[j]._id%>">Title:<%=users[i].photo[j].name%></a> 
+        <a class="color" href="/photos/<%=users[i].photo[j]._id%>">Title: <%=users[i].photo[j].name.toUpperCase()%></a> 
         <img src="<%=users[i].photo[j].image%>" alt="<%= users[i].photo[j].name %>">
     <%}%>
 </div>

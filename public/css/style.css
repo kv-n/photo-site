@@ -31,7 +31,6 @@ li {
 }
 
 a {
-    margin-bottom: 20px;
     text-decoration: none;
     font-family: 'Dosis', sans-serif;
     color: black;
@@ -60,8 +59,11 @@ a {
     font-family: 'Dosis', sans-serif;
     margin-top: 40px;
     font-size: 20px;
+    flex-wrap: wrap;
 }
-
+div{
+    display: inline;
+}
 .color:hover
 {
         color:rgba(78, 78, 78, 0.5);
@@ -112,6 +114,12 @@ font-size: 40px;
 margin: 20px;
 }
 
+.users {
+    font-family: 'Work Sans', sans-serif;
+    margin: 20px;
+    font-size: 30px;
+    text-align: left;
+}
 /* header fade in */
 
 
