@@ -2,38 +2,54 @@ const express = require('express')
 const router = express.Router()
 //model data goes here
 const Photo = require('../models/photos')
+const User = require('../models/users')
 
 
 //ROUTES
 
 //index
 router.get('/', (req, res) => {
-    Photo.find({}, (err, allPhotos) => {
-        if (err) {
-            res.send(err)
-        } else {
-            res.render("photos/index", {
-                photos: allPhotos
-            })
-        }
+    User.find({}, (err, allUsers) => {
+        res.render('photos/index', {
+            users: allUsers
+        })
     })
+
+    // Photo.find({}, (err, allPhotos) => {
+    //     if (err) {
+    //         res.send(err)
+    //     } else {
+    //         res.render("photos/index", {
+    //             photos: allPhotos
+    //         })
+    //     }
+    // })
 })
 
 //new route//rendering create form
 router.get('/new', (req, res) => {
-    res.render('photos/new')
+  User.find({}, (err, allUsers) => {
+      res.render('photos/new', {
+          users: allUsers
+      })
+  })
+
 })
 
 
 //create route //create in our database
 router.post('/', (req, res) => {
-    Photo.create(req.body, (err, createdImage) => {
-        if (err) {
-            res.send(err)
-        } else {
-            console.log(createdImage + ' has been added to the database')
-            res.redirect('/photos')
-        }
+    User.findById(req.body.userId, (err, foundUser) => {
+        Photo.create(req.body, (err, createdPhoto) => {
+            if(err) {
+                res.send(err)
+            } else {
+                foundUser.photo.push(createdPhoto);
+                foundUser.save((err, data) => {
+                    res.redirect('/photos')
+                })
+            }
+        })
     })
 })
 
@@ -80,12 +96,19 @@ router.get('/:id', (req, res) => {
 //delete
 router.delete('/:id', (req, res) => {
     Photo.findByIdAndRemove(req.params.id, (err, deletedImage) => {
-        if (err) {
-            res.send(err)
-        } else {
-            console.log(deletedImage)
-            res.redirect('/photos')
-        }
+        User.findOne({'photo._id': req.params.id}, (err, foundUser) => {
+            foundUser.photo.id(req.params.id).remove()
+            foundUser.save((err, data) => {
+                if (err){
+                    res.send(err)
+                } else {
+                    console.log(deletedImage)
+                    res.redirect('/photos')
+                }
+            })
+
+
+        })
     })
 })
 

@@ -1,19 +1,23 @@
 <%- include("../partials/header") %>
 
 <h1 class="index-h1 fade-in">All Dem Photos</h1>
-<a class="color" href="/photos/new" alt="Enter New Image">ENTER A NEW IMAGE</a>
+<a class="color" href="/photos/new" alt="Enter New Image">ENTER A NEW IMAGE</a> |
+<a class="color" href="/">HOME</a>
 <main class="index">
 
-<div class="photos">
-<% for(let i = 0; i < photos.length; i++){ %>
+<div>
+<% for(let i = 0; i < users.length; i++){ %>
 <div class="photo">
-Title: <a class="color" href="/photos/<%=photos[i]._id%>"><%= photos[i].name.toUpperCase() %></a> <img src="<%=photos[i].image%>" alt="<%= photos[i].name %>">
+<%= users[i].user.toUpperCase() %>
+    <% for(let j = 0; j < users[i].photo.length; j++){ %>
+        <a class="color" href="/photos/<%=users[i].photo[j]._id%>">Title:<%=users[i].photo[j].name%></a> 
+        <img src="<%=users[i].photo[j].image%>" alt="<%= users[i].photo[j].name %>">
+    <%}%>
 </div>
 <%}%>
 </div>
 
 </main>
-
 
 
 <%- include("../partials/footer") %>

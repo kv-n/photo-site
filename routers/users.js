@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/users')
+const Photo = require('../models/photos')
 
 router.get('/', (req, res) => {
     User.find({}, (err, allUsers) => {
@@ -44,8 +45,8 @@ router.get('/:id/edit', (req, res) => {
 })
 
 router.put('/:id', (req, res) => {
-    User.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, editedUser) => {
-        if(err) {
+    User.findByIdAndUpdate(req.params.id, req.body, { new: true }, (err, editedUser) => {
+        if (err) {
             res.send(err)
         } else {
             console.log(editedUser)
@@ -68,13 +69,21 @@ router.get('/:id', (req, res) => {
 })
 
 router.delete('/:id', (req, res) => {
-    User.findOneAndRemove(req.params.id, (err, deletedAuthor) => {
-        if (err){
-            res.send(err)
-        } else {
-            console.log(deletedAuthor)
-            res.redirect('/users')
+    User.findOneAndRemove(req.params.id, (err, deletedUser) => {
+        const userIds = [];
+        for (let i = 0; i < deletedUser.photo.length; i++) {
+            userIds.push(deletedUser.photo[i]._id)
         }
+
+        Photo.deleteMany(
+            {
+                _id: { $in: userIds }
+            },
+            (err, data) => {
+                res.redirect('/users')
+            }
+        )
+
     })
 })
 
