@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
         if (err) {
             res.send(err)
         } else {
-            res.render("index", {
+            res.render("photos/index", {
                 photos: allPhotos
             })
         }
@@ -21,7 +21,7 @@ router.get('/', (req, res) => {
 
 //new route//rendering create form
 router.get('/new', (req, res) => {
-    res.render('../views/new')
+    res.render('photos/new')
 })
 
 
@@ -45,7 +45,7 @@ router.get('/:id/edit', (req, res) => {
             res.send(err)
         } else {
             console.log(editPhoto)
-            res.render('../views/edit', {
+            res.render('photos/edit', {
                 photo: editPhoto
             })
         }
@@ -70,7 +70,7 @@ router.get('/:id', (req, res) => {
         if (err) {
             res.send(err)
         } else {
-            res.render('show', {
+            res.render('./photos/show', {
                 photo: foundPhoto
             })
         }

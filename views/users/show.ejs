@@ -1,0 +1,16 @@
+<%- include('../partials/header', {}) %>
+
+<main class="show-ejs">
+
+
+<h1 class="show-h1"><%=user.user.toUpperCase()%></h1>
+
+<form action="/users/<%= user._id %>?_method=DELETE" method="POST">
+<button type="submit">Delete This User</button>
+</form>
+<a class="color" href="/users/<%=user._id%>/edit"> Edit <%=user.user%></a> |
+<a class="color" href="/users">All Dem Users</a>
+
+</main>
+
+<%- include('../partials/footer') %>

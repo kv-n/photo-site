@@ -5,6 +5,7 @@ const app = express()
 const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
 const photoRouter = require('./routers/photos.js')
+const userRouter = require('./routers/users.js')
 
 app.set("view engine", "ejs")
 
@@ -20,6 +21,7 @@ app.use(express.static('public'));
 //routers
 
 app.use('/photos', photoRouter)
+app.use('/users', userRouter)
 
 
 //listener

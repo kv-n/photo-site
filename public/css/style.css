@@ -98,31 +98,31 @@ p {
 }
 
 img {
-    opacity: 0.3;
- }
- 
- img:hover {
-    opacity: 1.0;
- }
+opacity: 0.3;
+}
 
- .show-h1 {
-    font-family: 'Work Sans', sans-serif;
-    font-size: 40px;
-    margin: 20px;
- }
+img:hover {
+opacity: 1.0;
+}
 
- /* header fade in */
+.show-h1 {
+font-family: 'Work Sans', sans-serif;
+font-size: 40px;
+margin: 20px;
+}
+
+/* header fade in */
 
 
-  .fade-in {
-    animation: fadeIn ease 4s;
-  }
+.fade-in {
+animation: fadeIn ease 4s;
+}
 
- @keyframes fadeIn{
-    0% {
-      opacity:0;
-    }
-    100% {
-      opacity:1;
-    }
-  }
+@keyframes fadeIn{
+0% {
+    opacity:0;
+}
+100% {
+    opacity:1;
+}
+}
