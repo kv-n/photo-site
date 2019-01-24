@@ -54,6 +54,7 @@ a {
 
 .photo {
     width: 20%;
+    display: flex;
     height: auto;
     padding: 5px;
     font-family: 'Dosis', sans-serif;
