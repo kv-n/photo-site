@@ -62,7 +62,7 @@ router.get('/:id/edit', (req, res) => {
                 if (err) {
                     res.send(err)
                 } else {
-                    console.log(foundPhoto)
+                    console.log(photoUser)
                     res.render('photos/edit', {
                         photo: foundPhoto,
                         users: allUsers,
